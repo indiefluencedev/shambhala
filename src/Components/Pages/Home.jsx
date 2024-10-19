@@ -1,20 +1,16 @@
 import React from 'react';
 import CarouselComponent from '../Home/crousel';
 import ShambhalaComponent from '../Home/ShambhalaComponent';
-import ImageTextComponent from '../Home/ImageTextComponent';
-import Testimonial from '../Home/Testimonial';
-
-// import Resource from '../Home/resource';
+import Buddha from '../Home/Buddha';
+import OurFounder from '../Home/OurFounder';
 
 const Home = () => {
   return (
-    <div>
-      {/* <Navbar /> */}
+    <div className="w-full overflow-x-hidden"> {/* Ensure no overflow */}
       <CarouselComponent />
-      <ShambhalaComponent/>
-      <ImageTextComponent/>
-    <Testimonial/>
-      {/* <Resource/> */}
+      <ShambhalaComponent />
+      <Buddha />
+      <OurFounder />
     </div>
   );
 };

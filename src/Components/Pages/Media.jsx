@@ -4,6 +4,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'fire
 import { useAuth } from '../../AuthContext';
 import { v4 as uuidv4 } from 'uuid';
 import Masonry from 'react-masonry-css';
+import Loader from '../Loader';
 
 const db = getFirestore();
 const storage = getStorage();
@@ -15,11 +16,13 @@ const Media = () => {
   const [uploading, setUploading] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loadingImages, setLoadingImages] = useState(true); // Loader state for images
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, 'media'), (snapshot) => {
       const imagesData = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setImages(imagesData);
+      setLoadingImages(false); // Stop loader once images are fetched
     });
     return () => unsubscribe();
   }, []);
@@ -80,10 +83,8 @@ const Media = () => {
     const endX = touch.pageX;
 
     if (startX - endX > 50) {
-      // Swipe left
       showNextImage();
     } else if (endX - startX > 50) {
-      // Swipe right
       showPrevImage();
     }
   };
@@ -96,7 +97,7 @@ const Media = () => {
   };
 
   return (
-    <div className="p-4 sm:p-8 max-w-[1440px] mx-auto">
+    <div className="p-4 sm:p-8 max-w-[1440px] h-[100vh] mx-auto">
       <h1 className="text-2xl sm:text-3xl font-bold mb-4">Media Gallery</h1>
       {isAdmin && (
         <div className="mb-4">
@@ -104,29 +105,35 @@ const Media = () => {
           <button className="ml-2 px-4 py-2 bg-blue-500 text-white rounded">Upload Images</button>
         </div>
       )}
-      <Masonry breakpointCols={breakpointColumnsObj} className="flex w-auto" columnClassName="masonry-column">
-        {images.map((image, index) => (
-          <div
-            key={image.id}
-            className="relative group m-2 sm:mb-3 border border-gray-200 rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105"
-            onClick={() => openImageViewer(index)}
-          >
-            <img src={image.url} alt="Gallery" className="w-full object-cover" />
-            {isAdmin && (
-              <button
-                onClick={(e) => { e.stopPropagation(); handleDeleteImage(image.id, image.url); }}
-                className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-              >
-                Delete
-              </button>
-            )}
-          </div>
-        ))}
-      </Masonry>
+      
+      {loadingImages ? (
+        <Loader /> // Show loader specifically for the images
+      ) : (
+        <Masonry breakpointCols={breakpointColumnsObj} className="flex w-auto" columnClassName="masonry-column">
+          {images.map((image, index) => (
+            <div
+              key={image.id}
+              className="relative group m-2 sm:mb-3 border border-gray-200 rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105"
+              onClick={() => openImageViewer(index)}
+            >
+              <img src={image.url} alt="Gallery" className="w-full object-cover" />
+              {isAdmin && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleDeleteImage(image.id, image.url); }}
+                  className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                >
+                  Delete
+                </button>
+              )}
+            </div>
+          ))}
+        </Masonry>
+      )}
+
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 sm:p-8"
-          onTouchStart={handleSwipe} // Detect swipe gestures
+          onTouchStart={handleSwipe}
         >
           <button onClick={closeImageViewer} className="absolute top-4 right-4 text-white text-xl">X</button>
           <div className="relative flex items-center justify-center w-full h-full max-w-[90vw] max-h-[80vh]">
@@ -138,7 +145,6 @@ const Media = () => {
       )}
     </div>
   );
-  
 };
 
 export default Media;

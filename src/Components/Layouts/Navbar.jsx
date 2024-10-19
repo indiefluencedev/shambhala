@@ -69,6 +69,7 @@ const Navbar = () => {
         </div>
 
         <ul className="hidden md:flex space-x-6 lg:space-x-8 text-base lg:text-[16px] font-semibold">
+          {/* Navigation links */}
           <li>
             <NavLink to="/" className={({ isActive }) => isActive ? 'text-green-600' : 'text-gray-800 hover:text-green-600 transition-colors duration-300'}>
               HOME
@@ -137,13 +138,13 @@ const Navbar = () => {
         </div>
 
         {/* Hamburger Menu for small screens */}
-        <div className="md:hidden flex items-center">
+        <div className="flex items-center md:hidden">
           {isOpen ? <HiOutlineX className="text-3xl cursor-pointer" onClick={toggleMenu} /> : <HiOutlineMenuAlt4 className="text-3xl cursor-pointer" onClick={toggleMenu} />}
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <motion.div ref={mobileMenuRef} className={`${isOpen ? 'block' : 'hidden'} md:hidden bg-white shadow-md fixed top-16 left-0 w-full z-50 mt-10`} initial={{ opacity: 0, y: -50 }} animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -50 }} transition={{ duration: 0.5 }}>
+      <motion.div ref={mobileMenuRef} className={`${isOpen ? 'block' : 'hidden'} bg-white shadow-md fixed top-16 left-0 w-full z-50 mt-10`} initial={{ opacity: 0, y: -50 }} animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -50 }} transition={{ duration: 0.5 }}>
         <ul className="flex flex-col space-y-4 text-center text-lg font-semibold py-4">
           <li>
             <NavLink to="/" className={({ isActive }) => isActive ? 'text-green-600' : 'text-gray-800 hover:text-green-600 transition-colors duration-300'} onClick={() => { toggleMenu(); setIsDropdownOpen(false); }}>

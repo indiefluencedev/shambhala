@@ -10,9 +10,9 @@ import PropTypes from 'prop-types';
 const PrevArrow = ({ onClick }) => (
   <div
     onClick={onClick}
-    className="absolute left-[10px] md:left-[10px] xl:left-[10px] lg:left-[10px] top-1/2 transform -translate-y-1/2 z-10 ml-2 mt-52 cursor-pointer"
+    className="absolute left-[-30px] md:left-[-30px] lg:left-[-30px] top-1/2 transform -translate-y-1/2 z-10 ml-2 mt-52 cursor-pointer"
   >
-    <div className="rounded-full bg-gray-300 p-2 hover:bg-gary-500 active:bg-gray-300 transition duration-300">
+    <div className="rounded-full bg-gray-300 p-2 hover:bg-gray-500 active:bg-gray-300 transition duration-300">
       <FaArrowLeft className="text-teal-900 w-6 h-6" />
     </div>
   </div>
@@ -21,7 +21,7 @@ const PrevArrow = ({ onClick }) => (
 const NextArrow = ({ onClick }) => (
   <div
     onClick={onClick}
-    className="absolute right-[10px] md:right-[10px] xl:right-[10px] lg:right-[10px] top-1/2 transform -translate-y-1/2 z-10 mr-2 mt-52 cursor-pointer"
+    className="absolute right-[-30px] md:right-[-30px] lg:right-[-30px] top-1/2 transform -translate-y-1/2 z-10 mr-2 mt-52 cursor-pointer"
   >
     <div className="rounded-full bg-gray-300 p-2 hover:bg-gray-500 active:bg-gray-300 transition duration-300">
       <FaArrowRight className="text-teal-900 w-6 h-6" />

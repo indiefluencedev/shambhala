@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { getFirestore, collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../AuthContext'; // Import useAuth to access current user
+import { useAuth } from '../../AuthContext';
+import Loader from '../Loader'; // Assuming you have a Loader component ready
 
 const db = getFirestore();
 const allowedUIDs = ["VhdL12OuVJT5LPWZ57xlWHf1R333", "client-uid-2"];
 
 const Blogs = () => {
-  const { user } = useAuth(); // Access the current user from context
+  const { user } = useAuth();
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state for loader
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, 'blogs'), (snapshot) => {
       const blogsData = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+      // Sort blogs by timestamp in descending order
+      blogsData.sort((a, b) => b.timestamp - a.timestamp);
+
       setBlogs(blogsData);
+      setLoading(false); // Hide loader after data is fetched
     });
     return () => unsubscribe();
   }, []);
@@ -24,6 +31,8 @@ const Blogs = () => {
   const deleteBlog = async (id) => {
     await deleteDoc(doc(db, 'blogs', id));
   };
+
+  if (loading) return <Loader />; // Display the loader while loading
 
   return (
     <div className="p-8 max-w-[1240px] mx-auto">

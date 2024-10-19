@@ -65,7 +65,7 @@ const OurValues = () => {
           </div>
 
           {/* Pyramid Healing Section */}
-          <div className="flex items-center mb-10 relative" style={{ marginRight: '50px' }}>
+          <div className="flex items-center  relative" style={{ marginRight: '50px' }}>
             <div className="w-2/3 text-left">
               <h3 className="text-xl font-bold text-cyan-800 pb-5 ">PYRAMID HEALING</h3>
               {/* Replace <hr> with SVG image */}
@@ -81,8 +81,8 @@ const OurValues = () => {
             <div className="w-2/3 text-right">
               <h3 className="text-xl font-bold text-cyan-800 pb-4 lg:pb-6 xl:pb-5 ">MAITREYEE</h3>
               {/* Replace <hr> with SVG image */}
-              <img src={bottomright} alt="Bottom Right Line Decoration" className="w-[350px] lg:w-[390px] xl:w-[390px] lg:pb-0  xl:pb-3 h-auto absolute bottom-40 lg:bottom-28  xl:bottom-24 right-[-22px] lg:right-[-19px] xl:right-[-10px]" />
-              <p className="text-sm text-gray-600 lg:pt-1">
+              <img src={bottomright} alt="Bottom Right Line Decoration" className="w-[350px] lg:w-[390px] xl:w-[390px] lg:pb-0  xl:pb-3 h-auto absolute bottom-40 lg:bottom-[90px]  xl:bottom-[70px] right-[-22px] lg:right-[-19px] xl:right-[-10px]" />
+              <p className="text-sm text-gray-600 lg:pt-0">
                 Fostering unconditional love, kindness, and compassion toward all beings. Promoting unity and collective spiritual growth.
               </p>
             </div>

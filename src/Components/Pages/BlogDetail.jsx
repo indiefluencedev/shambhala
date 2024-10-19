@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import Loader from '../Loader';
+
 
 const db = getFirestore();
 
 const BlogDetail = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -14,29 +17,24 @@ const BlogDetail = () => {
       if (blogDoc.exists()) {
         setBlog(blogDoc.data());
       }
+      setLoading(false);
     };
     fetchBlog();
   }, [id]);
 
-  if (!blog) return <p>Loading...</p>;
+  if (loading) return <Loader />;
 
   return (
     <div className="p-8 max-w-5xl mx-auto space-y-8">
       {/* Top Section: Main Image and Details */}
       <div className=" lg:items-start ">
-        {/* {blog.mainImage && (
-          <img
-            src={blog.mainImage}
-            alt="Main Banner"
-            className="w-full lg:w-1/2 h-[400px] rounded-lg shadow-lg object-cover"
-          />
-        )} */}
+      
         <div className="w-full  flex flex-col justify-center space-y-4">
           <h1 className="text-4xl font-extrabold text-gray-800">{blog.title}</h1>
           <div className="flex items-center space-x-4 text-gray-500">
             <p className="text-sm"><strong>Author: </strong>{blog.author}</p>
             <p className="text-sm"><strong>Published on: </strong>{new Date(blog.timestamp.seconds * 1000).toLocaleDateString()}</p>
-            <p className="text-sm"><strong>ERT: </strong>3 minutes</p>
+            {/* <p className="text-sm"><strong>ERT: </strong>3 minutes</p> */}
           </div>
         </div>
       </div>

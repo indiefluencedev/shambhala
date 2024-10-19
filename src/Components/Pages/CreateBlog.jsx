@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { auth } from '../../config/firebase';
 import { getFirestore, collection, addDoc, doc, getDoc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { useNavigate } from 'react-router-dom';
 
 const db = getFirestore();
 const storage = getStorage();
@@ -11,7 +12,9 @@ const CreateBlogs = () => {
   const [mainImage, setMainImage] = useState(null);
   const [paragraphBlocks, setParagraphBlocks] = useState([{ subHeading: '', paragraph: '', bulletPoints: [''], image: null }]);
   const [author, setAuthor] = useState('');
+  const [showPopup, setShowPopup] = useState(false); // State for popup
   const user = auth.currentUser;
+  const navigate = useNavigate(); // For navigation
 
   useEffect(() => {
     if (user) {
@@ -60,9 +63,17 @@ const CreateBlogs = () => {
       timestamp: new Date(),
     });
 
+    // Clear input fields and show popup
     setTitle('');
     setMainImage(null);
     setParagraphBlocks([{ subHeading: '', paragraph: '', bulletPoints: [''], image: null }]);
+    setAuthor('');
+    setShowPopup(true); // Show the popup
+
+    // Redirect after a timeout
+    setTimeout(() => {
+      navigate('/blogs'); // Redirect to the blogs page
+    }, 2000);
   };
 
   const addParagraphBlock = () => {
@@ -98,6 +109,12 @@ const CreateBlogs = () => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Blog Title"
+        className="w-full border p-2 mb-4"
+      />
+      <input
+        value={author}
+        onChange={(e) => setAuthor(e.target.value)}
+        placeholder="Author Name"
         className="w-full border p-2 mb-4"
       />
       <div className="mb-4">
@@ -166,6 +183,20 @@ const CreateBlogs = () => {
       <button onClick={createBlog} className="bg-blue-500 text-white px-4 py-2 rounded">
         Create Blog
       </button>
+
+      {showPopup && (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-4 rounded shadow">
+            <p className="text-lg">Blog has been created successfully!</p>
+            <button
+              onClick={() => setShowPopup(false)}
+              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

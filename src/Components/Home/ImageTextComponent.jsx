@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 import mount from '../../assets/mount.jpeg';
 import { FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 
 const ImageTextComponent = () => {
+  const ref = useRef(null);
+
   return (
-    <div className="max-w-[1440px] mx-auto  py-10 px-10 xl:py-20 xl:px-20">
+    <div className="max-w-[1440px] mx-auto py-10 px-10 xl:py-20 xl:px-20" ref={ref}>
       <div className="flex flex-col lg:flex-row gap-8 items-start">
         
         {/* Image Grid Container for Desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:grid-rows-2 gap-4 w-full lg:w-2/5">
+        <motion.div 
+          className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:grid-rows-2 gap-4 w-full lg:w-2/5"
+          initial={false} // No animation
+          animate={false} // No animation
+        >
           <img 
             src={mount}
             alt="Large" 
@@ -24,10 +31,14 @@ const ImageTextComponent = () => {
             alt="Small 2" 
             className="w-full h-full object-cover" 
           />
-        </div>
+        </motion.div>
 
         {/* Text Section */}
-        <div className="w-full lg:w-3/5 text-left md:text-left lg:text-left">
+        <motion.div 
+          className="w-full lg:w-3/5 text-left"
+          initial={false} // No animation
+          animate={false} // No animation
+        >
           <div className="flex items-center justify-start space-x-4 mb-4">
             <button className="inline-flex items-center px-4 py-2 bg-secondary rounded-md">
               <div className="w-2.5 h-2.5 bg-accent rounded-full animate-pulse mr-2"></div>
@@ -64,7 +75,7 @@ const ImageTextComponent = () => {
               See All Events
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

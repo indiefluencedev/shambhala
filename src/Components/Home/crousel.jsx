@@ -1,4 +1,3 @@
-// CarouselComponent.jsx
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -7,7 +6,7 @@ import bg from '../../assets/bg.png';
 
 const CarouselComponent = () => {
   return (
-    <div className="relative w-full h-[550px] md:h-[767px] overflow-hidden">
+    <div className="relative w-full h-[550px] md:h-[767px] overflow-hidden px-6 md:px-8 lg:px-20"> {/* Increased padding on the left and right */}
       <Carousel
         autoPlay
         interval={3000}

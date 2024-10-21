@@ -14,8 +14,27 @@ const Programs = () => {
     const fetchEvents = async () => {
       const apiKey = import.meta.env.VITE_YOUTUBE_API_KEY;
       const channelId = import.meta.env.VITE_YOUTUBE_CHANNEL_ID;
+
       try {
-        const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+        // Fetch live and upcoming events
+        const liveResponse = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+          params: {
+            part: 'snippet',
+            channelId: channelId,
+            type: 'video',
+            eventType: 'live', // Fetch live and upcoming streams
+            key: apiKey,
+            maxResults: 10
+          },
+        });
+
+        const liveEvents = liveResponse.data.items.map(event => ({
+          ...event,
+          status: event.snippet.liveBroadcastContent === 'live' ? 'Live' : 'Upcoming',
+        }));
+
+        // Fetch past and uploaded videos
+        const pastResponse = await axios.get('https://www.googleapis.com/youtube/v3/search', {
           params: {
             part: 'snippet',
             channelId: channelId,
@@ -24,15 +43,36 @@ const Programs = () => {
             maxResults: 10
           },
         });
-        const fetchedEvents = response.data.items.map(event => {
-          const eventStatus = event.snippet.liveBroadcastContent || 'none';
-          return {
-            ...event,
-            status: eventStatus === 'none' || eventStatus === '' ? 'Past' : eventStatus.charAt(0).toUpperCase() + eventStatus.slice(1),
-          };
+
+        const pastEvents = pastResponse.data.items.map(event => ({
+          ...event,
+          status: event.snippet.liveBroadcastContent === 'none' ? 'Past' : event.snippet.liveBroadcastContent.charAt(0).toUpperCase() + event.snippet.liveBroadcastContent.slice(1),
+        }));
+
+        // Combine live, upcoming, and past events into a map by videoId
+        const allEventsMap = new Map();
+
+        // First, add all past events
+        pastEvents.forEach(event => {
+          allEventsMap.set(event.id.videoId, event);
         });
-        setEvents(fetchedEvents);
-        setFilteredEvents(fetchedEvents); // Initial state with all events
+
+        // Next, add live and upcoming events, replacing any upcoming with live if it exists
+        liveEvents.forEach(event => {
+          if (allEventsMap.has(event.id.videoId)) {
+            // If it's already there (upcoming), update it to live
+            allEventsMap.set(event.id.videoId, event);
+          } else {
+            // Otherwise, add the live or upcoming event
+            allEventsMap.set(event.id.videoId, event);
+          }
+        });
+
+        // Convert map back to array
+        const allEvents = Array.from(allEventsMap.values());
+
+        setEvents(allEvents);
+        setFilteredEvents(allEvents); // Initial state with all events
       } catch (error) {
         console.error('Error fetching YouTube events:', error);
       }

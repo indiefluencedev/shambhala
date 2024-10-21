@@ -38,7 +38,7 @@ const ContactForm = () => {
       </div>
       <button
         type="submit"
-        className="w-[200px] py-3 rounded-md bg-teal-600 bg-opacity-80 text-white font-semibold hover:bg-opacity-90 transition duration-300 mx-auto block"
+        className="w-[200px] py-3 z-50 rounded-md bg-teal-600 bg-opacity-80 text-white font-semibold hover:bg-opacity-90 transition duration-300 mx-auto block"
       >
         SUBMIT
       </button>

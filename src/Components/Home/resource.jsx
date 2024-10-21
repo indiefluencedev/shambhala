@@ -4,70 +4,70 @@ import resource1 from '../../assets/resources.jpeg';
 import resource2 from '../../assets/resource2.jpeg';
 import resource3 from '../../assets/resource3.jpeg';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Importing the arrow icons from react-icons
 
 const Resource = () => {
     const navigate = useNavigate(); // Initialize useNavigate
 
-  const handleNext = () => {
-    navigate('/blog'); // Navigate to the Blogs page
-        
+    const handleNext = () => {
+        navigate('/blog'); // Navigate to the Blogs page
     };
 
     return (
-        <div className="flex flex-col items-center my-20"> {/* Changed to flex-col for vertical stacking */}
-            <h2 className="text-2xl font-bold mb-6">Resources</h2> {/* Added heading */}
+        <div className="flex flex-col items-center my-10">
+            <h2 className="text-4xl font-bold mb-6">Resources</h2>
 
-            <div className="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6"> {/* Responsive layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Grid for 1024px and 768px */}
                 {/* Image 1: Blogs */}
-                <div className="relative group w-full md:w-[400px]"> {/* Adjust width for larger images */}
+                <div className="relative group w-full md:w-[300px] lg:w-[300px] mx-auto">
                     <img
                         src={resource1}
                         alt="/blog"
-                        className="w-full h-44 object-cover transition-transform duration-300 transform group-hover:scale-105 opacity-50" // Adjust to full width
+                        className="w-full h-36 object-cover transition-transform duration-300 transform group-hover:scale-105 opacity-50"
                     />
                     <div className="absolute text-xl top-2 left-2 text-accent font-semibold">Blogs</div>
                     <button
                         onClick={handleNext}
-                        className="absolute bottom-2 right-2 h-10 w-10 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition focus:outline-none"
+                        className="absolute bottom-2 right-2 h-8 w-8 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition focus:outline-none"
                     >
-                        &gt; {/* Right Arrow */}
+                        <FaChevronRight /> {/* Using FaChevronRight for the right arrow */}
                     </button>
                 </div>
 
                 {/* Image 2: Media */}
-                <div className="relative group w-full md:w-[400px]">
-                    <Link to="/media"> {/* Wrap the entire card in Link */}
+                <div className="relative group w-full md:w-[300px] lg:w-[300px] mx-auto">
+                    <Link to="/media">
                         <img
                             src={resource2}
                             alt="Media"
-                            className="w-full h-44 object-cover transition-transform duration-300 transform group-hover:scale-105 opacity-50"
+                            className="w-full h-36 object-cover transition-transform duration-300 transform group-hover:scale-105 opacity-50"
                         />
                         <div className="absolute text-xl top-2 left-2 text-accent font-semibold">Media</div>
                     </Link>
-                    <Link to="/media"> {/* Link the button as well */}
+                    <Link to="/media">
                         <button
-                            className="absolute bottom-2 right-2 h-10 w-10 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition focus:outline-none"
+                            className="absolute bottom-2 right-2 h-8 w-8 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition focus:outline-none"
                         >
-                            &gt; {/* Right Arrow */}
+                            <FaChevronRight /> {/* Using FaChevronRight for the right arrow */}
                         </button>
                     </Link>
                 </div>
 
                 {/* Image 3: Guides */}
-                <div className="relative group w-full md:w-[400px]">
-                    <Link to="/guides"> {/* Wrap the entire card in Link */}
+                <div className="relative group w-full md:w-[300px] md:col-span-2 md:mx-auto lg:w-[300px] lg:col-span-1 lg:mx-0 mx-auto"> {/* Center third card on medium devices */}
+                    <Link to="/guides">
                         <img
                             src={resource3}
                             alt="Guides"
-                            className="w-full h-44 object-cover transition-transform duration-300 transform group-hover:scale-105 opacity-50"
+                            className="w-full h-36 object-cover transition-transform duration-300 transform group-hover:scale-105 opacity-50"
                         />
                         <div className="absolute text-xl top-2 left-2 text-accent font-semibold">Guides</div>
                     </Link>
-                    <Link to="/guides"> {/* Link the button as well */}
+                    <Link to="/guides">
                         <button
-                            className="absolute bottom-2 right-2 h-10 w-10 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition focus:outline-none"
+                            className="absolute bottom-2 right-2 h-8 w-8 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition focus:outline-none"
                         >
-                            &gt; {/* Right Arrow */}
+                            <FaChevronRight /> {/* Using FaChevronRight for the right arrow */}
                         </button>
                     </Link>
                 </div>

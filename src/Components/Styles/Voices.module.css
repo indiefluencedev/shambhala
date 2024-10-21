@@ -1,0 +1,177 @@
+/* General container and heading styles */
+.voicesContainer {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line {
+    display: inline-block;
+    width: 67px;
+    height: 3px;
+    background-color: black;
+    margin: 0 20px;
+    font-weight: bolder;
+}
+
+/* Swiper container */
+.swiperContainer {
+    width: 100%;
+    max-width: 1043px;
+    margin: 0 auto;
+}
+
+.slide {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 40px;
+    max-width: 1043px;
+    min-height: 260px;
+    margin: 20px auto;
+    overflow: visible;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow on all sides */
+  }
+  
+
+.text {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #605f5f;
+}
+
+.name {
+    font-size: 16px;
+    font-style: italic;
+    color: black;
+    font-weight: 500;
+}
+
+/* Custom Navigation Buttons */
+.navButtons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.customPrev,
+.customNext {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.customPrev .icon,
+.customNext .icon {
+    font-size: 18px;
+    color: black;
+}
+
+.inactiveButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    color: #d3d3d3;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inactiveButton .icon {
+    font-size: 18px;
+    color: #d3d3d3;
+}
+
+.inactiveButton:hover {
+    background-color: white;
+    transform: none;
+}
+
+.customPrev:hover,
+.customNext:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .swiperContainer {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .card {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .navButtons {
+        gap: 10px;
+    }
+}
+
+/* --- Mobile Responsive Design for 480px --- */
+@media (max-width: 480px) {
+    .swiperContainer {
+      max-width: 100%;
+      padding: 0 10px;
+    }
+  
+    .card {
+      padding: 20px;
+      max-width: 90%;
+      height: 300px; /* Set a fixed height for the card */
+      overflow-y: auto; /* Add vertical scroll for the card content */
+    }
+  
+    .text {
+      font-size: 14px;
+    }
+  
+    .line {
+      display: none; /* Hide the line on smaller screens */
+    }
+  
+    .navButtons {
+      gap: 10px;
+    }
+  
+    /* Customize the scrollbar */
+    .card::-webkit-scrollbar {
+      width: 3px; /* Thin scrollbar width */
+    }
+  
+    .card::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2); /* Light gray color for the scrollbar thumb */
+      border-radius: 10px; /* Rounded corners for the scrollbar */
+    }
+  
+    .card::-webkit-scrollbar-track {
+      background-color: transparent; /* Transparent background for the track */
+    }
+  }
+  

@@ -27,6 +27,7 @@
     "react-slick": "^0.30.2",
     "shambhala": "file:",
     "slick-carousel": "^1.8.1",
+    "swiper": "^11.1.14",
     "uuid": "^10.0.0"
   },
   "devDependencies": {

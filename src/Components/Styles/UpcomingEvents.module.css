@@ -35,9 +35,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.10); /* Lighter black overlay */
+  background-color: rgba(255, 255, 255, 0.7); /* White overlay with 80% opacity */
   z-index: 1;
 }
+
 
 .content {
   position: absolute;
@@ -49,7 +50,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
   z-index: 2;
 }
 
@@ -66,16 +67,18 @@
   font-size: 13px;
   margin-bottom: 15px;
   letter-spacing: 0.1em;
+  font-weight: 700;
 }
 
 .description {
-  font-size: 13px;
+  font-size: 14px;
   text-align: center;
   max-width: 670px;
   margin-bottom: 20px;
   letter-spacing: 0.05em;
   line-height: 24px;
-  color: rgba(255, 255, 255, 0.8);
+  color: black;
+  font-weight: 400;
 }
 
 .buttons {
@@ -146,6 +149,7 @@
   .description {
     font-size: 12px;
     max-width: 90%;
+    font-weight: 400;
   }
 
   .buttons {
@@ -169,7 +173,8 @@
     justify-content: center;
     gap: 20px; /* Space between the calendar and location icons */
     font-size: 14px;
-    color: white;
+    color: black;
+    font-weight: 700;
   }
   
   .date, .location {
@@ -202,6 +207,7 @@
   .description {
     font-size: 11px;
     line-height: 20px; /* Adjust line height for smaller text */
+    font-weight: 400;
   }
 
   .buttons {
@@ -225,7 +231,8 @@
     justify-content: center;
     gap: 5px; /* Space between the calendar and location icons */
     font-size: 12px;
-    color: white;
+    color: black;
+    font-weight: 700;
   }
   
   .date, .location {

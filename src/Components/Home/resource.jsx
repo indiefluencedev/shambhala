@@ -3,16 +3,9 @@ import { Link } from 'react-router-dom'; // Import Link for navigation
 import resource1 from '../../assets/resources.jpeg';
 import resource2 from '../../assets/resource2.jpeg';
 import resource3 from '../../assets/resource3.jpeg';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Importing the arrow icons from react-icons
+import { FaChevronRight } from 'react-icons/fa'; // Importing the arrow icons from react-icons
 
 const Resource = () => {
-    const navigate = useNavigate(); // Initialize useNavigate
-
-    const handleNext = () => {
-        navigate('/blog'); // Navigate to the Blogs page
-    };
-
     return (
         <div className="flex flex-col items-center my-10">
             <h2 className="text-4xl font-bold mb-6">Resources</h2>
@@ -20,18 +13,19 @@ const Resource = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Grid for 1024px and 768px */}
                 {/* Image 1: Blogs */}
                 <div className="relative group w-full md:w-[300px] lg:w-[300px] mx-auto">
-                    <img
-                        src={resource1}
-                        alt="/blog"
-                        className="w-full h-36 object-cover transition-transform duration-300 transform group-hover:scale-105 opacity-50"
-                    />
-                    <div className="absolute text-xl top-2 left-2 text-accent font-semibold">Blogs</div>
-                    <button
-                        onClick={handleNext}
-                        className="absolute bottom-2 right-2 h-8 w-8 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition focus:outline-none"
-                    >
-                        <FaChevronRight /> {/* Using FaChevronRight for the right arrow */}
-                    </button>
+                    <Link to="/blogs"> {/* Wrap the entire Blogs card in a Link */}
+                        <img
+                            src={resource1}
+                            alt="Blogs"
+                            className="w-full h-36 object-cover transition-transform duration-300 transform group-hover:scale-105 opacity-50"
+                        />
+                        <div className="absolute text-xl top-2 left-2 text-accent font-semibold">Blogs</div>
+                        <button
+                            className="absolute bottom-2 right-2 h-8 w-8 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition focus:outline-none"
+                        >
+                            <FaChevronRight /> {/* Using FaChevronRight for the right arrow */}
+                        </button>
+                    </Link>
                 </div>
 
                 {/* Image 2: Media */}

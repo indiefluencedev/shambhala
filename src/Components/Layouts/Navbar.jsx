@@ -9,6 +9,7 @@ import { auth } from '../../config/firebase'; // Import Firebase auth
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isProgramDropdownOpen, setIsProgramDropdownOpen] = useState(false); // State for Programs dropdown
   const [user, setUser] = useState(null); // State to track user
   const dropdownRef = useRef(null);
   const mobileMenuRef = useRef(null);
@@ -21,16 +22,22 @@ const Navbar = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const toggleProgramDropdown = () => {
+    setIsProgramDropdownOpen(!isProgramDropdownOpen);
+  };
+
   // Close dropdown and mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false);
+        setIsProgramDropdownOpen(false); // Close Programs dropdown if clicked outside
       }
 
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
         setIsOpen(false); // Close mobile menu if clicked outside
         setIsDropdownOpen(false); // Close dropdown when mobile menu closes
+        setIsProgramDropdownOpen(false); // Close Programs dropdown when mobile menu closes
       }
     };
 
@@ -80,10 +87,29 @@ const Navbar = () => {
               ABOUT US
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/program" className={({ isActive }) => isActive ? 'text-green-600' : 'text-gray-800 hover:text-green-600 transition-colors duration-300'}>
+
+          {/* Dropdown for Programs */}
+          <li className="relative" ref={dropdownRef}>
+            <div className="cursor-pointer flex items-center text-gray-800 hover:text-green-600 transition-colors duration-300" onClick={toggleProgramDropdown}>
               PROGRAMS
-            </NavLink>
+              <IoMdArrowDropdown className={`ml-1 transition-transform ${isProgramDropdownOpen ? 'rotate-180' : ''}`} />
+            </div>
+            <AnimatePresence>
+              {isProgramDropdownOpen && (
+                <motion.ul className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-40 bg-white bg-opacity-90 backdrop-blur-lg rounded shadow-lg text-center" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
+                  <li>
+                    <NavLink to="/OnlineEvents" className={({ isActive }) => isActive ? 'text-green-600' : 'block px-4 py-2 text-gray-800 hover:bg-green-200'} onClick={() => { setIsProgramDropdownOpen(false); setIsOpen(false); }}>
+                      Online Events
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/offlineevents" className={({ isActive }) => isActive ? 'text-green-600' : 'block px-4 py-2 text-gray-800 hover:bg-green-200'} onClick={() => { setIsProgramDropdownOpen(false); setIsOpen(false); }}>
+                      Offline Events
+                    </NavLink>
+                  </li>
+                </motion.ul>
+              )}
+            </AnimatePresence>
           </li>
 
           {/* Dropdown for Resources */}
@@ -94,7 +120,7 @@ const Navbar = () => {
             </div>
             <AnimatePresence>
               {isDropdownOpen && (
-                <motion.ul className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-40 bg-white bg-opacity-90 backdrop-blur-lg rounded shadow-lg" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
+                <motion.ul className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-40 bg-white bg-opacity-90 backdrop-blur-lg rounded shadow-lg text-center" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
                   <li>
                     <NavLink to="/blogs" className={({ isActive }) => isActive ? 'text-green-600' : 'block px-4 py-2 text-gray-800 hover:bg-green-200'} onClick={() => { setIsDropdownOpen(false); setIsOpen(false); }}>
                       Blogs
@@ -156,10 +182,29 @@ const Navbar = () => {
               ABOUT US
             </NavLink>
           </li>
+
+          {/* Dropdown for Programs in mobile view */}
           <li>
-            <NavLink to="/program" className={({ isActive }) => isActive ? 'text-green-600' : 'text-gray-800 hover:text-green-600 transition-colors duration-300'} onClick={() => { toggleMenu(); setIsDropdownOpen(false); }}>
+            <div className="cursor-pointer flex items-center justify-center text-gray-800 hover:text-green-600 transition-colors duration-300" onClick={toggleProgramDropdown}>
               PROGRAMS
-            </NavLink>
+              <IoMdArrowDropdown className={`ml-1 transition-transform ${isProgramDropdownOpen ? 'rotate-180' : ''}`} />
+            </div>
+            <AnimatePresence>
+              {isProgramDropdownOpen && (
+                <motion.ul className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-40 bg-white bg-opacity-90 backdrop-blur-lg rounded shadow-lg" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
+                  <li>
+                    <NavLink to="/OnlineEvents" className={({ isActive }) => isActive ? 'text-green-600' : 'block px-4 py-2 text-gray-800 hover:bg-green-200'} onClick={() => setIsProgramDropdownOpen(false)}>
+                      Online Events
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/OfflineEvents" className={({ isActive }) => isActive ? 'text-green-600' : 'block px-4 py-2 text-gray-800 hover:bg-green-200'} onClick={() => setIsProgramDropdownOpen(false)}>
+                      Offline Events
+                    </NavLink>
+                  </li>
+                </motion.ul>
+              )}
+            </AnimatePresence>
           </li>
 
           {/* Dropdown for Resources in mobile view */}

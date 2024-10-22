@@ -8,7 +8,7 @@ const UpcomingEvents = () => {
   return (
     <div className={styles.outerContainer}>
       <div className={styles.container}>
-        <h1 className={styles.heading}>Join us in our upcoming event</h1>
+        <h1 className={styles.heading}>Join us in our Upcoming Event</h1>
         <div className={styles.imageContainer}>
           <img src={joinimage} alt="Event" className={styles.image} />
           <div className={styles.overlay}></div>

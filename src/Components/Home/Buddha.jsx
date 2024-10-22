@@ -22,15 +22,33 @@ const Buddha = () => {
         </div>
 
         {/* Right Side: Text Content */}
-        <div className="flex-1 md:pl-3 xl:pl-10 lg:pl-10 text-center md:text-left">
-          <h4 className=" h4-text md:ml-3 uppercase text-[#348479] font-bold xl:font-bold mb-2 mt-10 text-[12px]" style={{ letterSpacing: '0.05em' }}>
+        <div className="flex-1 md:pl- xl:pl-10 lg:pl-10 text-center md:text-left">
+          <h4 className="h4-text md:ml-3 uppercase text-[#348479] font-bold xl:font-bold mb-2 mt-10 text-[12px]" style={{ letterSpacing: '0.05em' }}>
             What makes us different?
           </h4>
-          <h2 className=" h2-text xl:text-3xl lg:text-3xl md:text-[20px] text-3xl ml-3 text-[black] font-bold" style={{ letterSpacing: '0.03rem', fontWeight: '700' }}>
+          <h2 className="h2-text xl:text-3xl lg:text-3xl md:text-[20px] text-3xl ml-3 text-[black] font-bold" style={{ letterSpacing: '0.03rem', fontWeight: '700' }}>
             Anapanasati Meditation: <br /> Shambhala’s Unique Path
           </h2>
+
+          {/* Updated Lorem Ipsum Text */}
+          <p className="text-gray-600 xl:ml-2 mt-4 mx-auto px-5 md:px-0 lg:mx-2 xl:px-0 max-w-[700px]">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nascetur leo a aliquam, efficitur at himenaeos. Fusce primis iaculis facilisis lectus dictum donec penatibus pulvinar. Vestibulum elementum eget nibh varius; fames conubia posuere rhoncus. Vestibulum elementum eget nibh varius; fames conubia posuere rhoncus.
+          </p>
         </div>
       </div>
+
+      {/* Media query to target 1440px, 1024px, and 768px frame sizes */}
+      <style jsx>{`
+        @media (max-width: 1440px) and (min-width: 769px) {
+          p {
+            text-align: left; /* Align the paragraph text to the left */
+            margin-left: 0; /* Reset left margin */
+            margin-right: 0; /* Reset right margin */
+          }
+
+          
+        }
+      `}</style>
     </div>
   );
 };

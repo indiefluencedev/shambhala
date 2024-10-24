@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 600px;
-    background-color: #f0f0f0;
+    /* height: 600px;
+    background-color: #f0f0f0; */
 }
 
 .shambhala-inner {
@@ -28,6 +28,10 @@
     position: relative;
     z-index: 1;
     padding: 0 20px;
+}
+
+.shambhala-content h4 {
+    text-transform: uppercase;
 }
 
 .shambhala-inner {
@@ -94,6 +98,7 @@
 
     .shambhala-container {
         height: 550px;
+        margin-top: 30px;
     }
   
     .shambhala-content {

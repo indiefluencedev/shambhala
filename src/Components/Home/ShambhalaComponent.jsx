@@ -13,8 +13,8 @@ const ShambhalaComponent = () => {
           <h4 style={{ letterSpacing: '0.10em', marginBottom: '0.25rem', color: '#417578', fontWeight: '600', marginTop: '200px' }}>
             Welcome to Shambhala Spiritual Foundation
           </h4>
-          <h1 className='second-heading' style={{ marginBottom: '1rem', fontWeight: '600' }}>
-            Awakening <span style={{ color: '#2F8479' }}>Inner Peace</span> to Transform <br /> Lives Worldwide
+          <h1 className='second-heading' style={{ marginBottom: '1rem', fontWeight: '700' }}>
+          Discover the Path to Spiritual Awakening
           </h1>
           <p style={{ lineHeight: '1.6', letterSpacing: '0.10em', marginBottom: '1.5rem', color: '#666', marginTop: '40px' }}>
             At Shambhala Spiritual Foundation, we believe in the profound potential of every soul to achieve enlightenment and inner peace through meditation and mindful living. Our mission is to guide individuals on a spiritual journey of self-discovery, fostering a sense of unity, compassion, and purpose. Join us in creating a compassionate, enlightened society where everyone can realize their highest potential.

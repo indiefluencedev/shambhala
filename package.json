@@ -27,6 +27,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.26.2",
     "react-slick": "^0.30.2",
+    "react-svg": "^16.1.34",
     "shambhala": "file:",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.14",

@@ -1,5 +1,7 @@
 import React from 'react';
 import logo from '../../assets/logo.png'; // Ensure the path to your logo is correct
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faInstagram, faYoutube, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
   return (
@@ -9,7 +11,7 @@ const Footer = () => {
           {/* Left Section - Logo and Description */}
           <div className="md:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
             <img src={logo} alt="Shambhala Logo" className="w-24 mb-4" />
-            <h3 className="text-3xl font-bold ">Shambhala </h3>
+            <h3 className="text-3xl font-bold">Shambhala</h3>
             <h6 className='mb-4 text-[18px] font-regular'>Spiritual Foundation</h6>
             <p className="text-sm leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nascetur leo a aliquam efficitur at himenaeos. Fusce
@@ -70,12 +72,28 @@ const Footer = () => {
               +91 12345-67890<br />
               123, XYZ Colony, New Delhi, India
             </p>
+
+            {/* Social Icons */}
+            <div className="flex space-x-4 mt-4 justify-center md:justify-start">
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <FontAwesomeIcon icon={faFacebookF} className="text-white hover:text-gray-400 transition" size="lg" />
+              </a>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <FontAwesomeIcon icon={faInstagram} className="text-white hover:text-gray-400 transition" size="lg" />
+              </a>
+              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <FontAwesomeIcon icon={faYoutube} className="text-white hover:text-gray-400 transition" size="lg" />
+              </a>
+              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                <FontAwesomeIcon icon={faXTwitter} className="text-white hover:text-gray-400 transition" size="lg" />
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Bottom Line */}
         <div className="border-t border-gray-400 mt-8 pt-4 text-center text-sm">
-          &copy; 2024 Shambhala Spiritual Foundation. All rights reserved.
+          &copy; 2024 Shambhala Spiritual Foundation. <a href="/login" className="text-white hover:underline">All rights</a> reserved.
         </div>
       </div>
     </footer>

@@ -1,9 +1,9 @@
 // import MergedComponent from '../ContactUsPage/MergedComponent'; 
-import QuestionText from "../ContactUsPage/QuestionText";
-import Icons from "../ContactUsPage/Icons";
-import ContactForm from "../ContactUsPage/ContactForm";
+import QuestionText from "../Components/ContactUsPage/QuestionText";
+import Icons from "../Components/ContactUsPage/Icons";
+import ContactForm from "../Components/ContactUsPage/ContactForm";
 // import MergedComponent from '../ContactUsPage/MergedComponent';
-import bgimage from "../../assets/abstract.jpg";
+import bgimage from "../assets/image/abstract2.jpg";
 
 const ContactUs = () => {
   return (

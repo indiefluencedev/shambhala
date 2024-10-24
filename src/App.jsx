@@ -1,22 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Layouts/Navbar';
-import Home from './Components/Pages/Home';
-import AboutUs from './Components/Pages/AboutUs';
-// import Program from './Components/Pages/Program';
-import ContactUs from './Components/Pages/ContactUs';
+import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
+// import Program from './pages/Program';
+import ContactUs from './pages/ContactUs';
 import Footer from './Components/Layouts/Footer';
 
-import Guides from './Components/Pages/Guides';
-import Media from './Components/Pages/Media';
+import Guides from './pages/Guides';
+import Media from './pages/Media';
 
-import Login from './Components/Pages/Login';
-import Blogs from './Components/Pages/Blogs';
-import CreateBlogs from './Components/Pages/CreateBlog';
-import BlogDetail from './Components/Pages/BlogDetail';
-import EditBlog from './Components/Pages/EditBlog';
+import Login from './pages/Login';
+import Blogs from './pages/Blogs';
+import CreateBlogs from './pages/CreateBlog';
+import BlogDetail from './pages/BlogDetail';
+import EditBlog from './pages/EditBlog';
 import ProgramsPages from './Components/Programs/ProgramsPages';
-import OfflineEvents from './Components/Pages/OfflineEvents';
+import OfflineEvents from './pages/OfflineEvents';
 import DonateForm from './Components/DonateForm';
 import ScrollToTop from './Components/Layouts/ScrollToTop'; 
 

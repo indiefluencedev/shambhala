@@ -1,9 +1,9 @@
-import Banner from "../Banner";
-import AboutText from "../AboutUsPage/AboutText";
-import OurValues from "../AboutUsPage/OurValues";
-import Meditation from "../AboutUsPage/Meditation";
-import TeamLead from "../AboutUsPage/TeamLead";
-import OurValuesMobile from "../AboutUsPage/OurValuesMobile";
+import Banner from "../Components/Banner";
+import AboutText from "../Components/AboutUsPage/AboutText";
+import OurValues from "../Components/AboutUsPage/OurValues";
+import Meditation from "../Components/AboutUsPage/Meditation";
+import TeamLead from "../Components/AboutUsPage/TeamLead";
+import OurValuesMobile from "../Components/AboutUsPage/OurValuesMobile";
 
 const AboutUs = () => {
   return (

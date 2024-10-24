@@ -1,6 +1,6 @@
 import React from 'react'
-import Guidess from '../Guide/guides'
-import Banner from "../Banner";
+import Guidess from '../Components/Guide/guides'
+import Banner from "../Components/Banner";
 
 const Guides = () => {
   return (

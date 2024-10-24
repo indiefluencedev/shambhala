@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
-import Loader from '../Loader';
+import Loader from '../Components/Loader';
 
 
 const db = getFirestore();

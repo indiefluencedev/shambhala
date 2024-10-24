@@ -3,7 +3,6 @@ import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from 'fi
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { useAuth } from '../AuthContext';
 import { v4 as uuidv4 } from 'uuid';
-import Masonry from 'react-masonry-css';
 import Loader from '../Components/Loader';
 
 const db = getFirestore();
@@ -89,15 +88,8 @@ const Media = () => {
     }
   };
 
-  const breakpointColumnsObj = {
-    default: 4,
-    1200: 3,
-    768: 2,
-    500: 1,
-  };
-
   return (
-    <div className="p-4 sm:p-8 max-w-[1440px] h-[100vh] mx-auto">
+    <div className="p-4 sm:p-8 max-w-[1440px] mx-auto">
       <h1 className="text-2xl sm:text-3xl font-bold mb-4">Media Gallery</h1>
       {isAdmin && (
         <div className="mb-4">
@@ -105,18 +97,22 @@ const Media = () => {
           <button className="ml-2 px-4 py-2 bg-blue-500 text-white rounded">Upload Images</button>
         </div>
       )}
-      
+
       {loadingImages ? (
         <Loader /> // Show loader specifically for the images
       ) : (
-        <Masonry breakpointCols={breakpointColumnsObj} className="flex w-auto" columnClassName="masonry-column">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
           {images.map((image, index) => (
             <div
               key={image.id}
-              className="relative group m-2 sm:mb-3 border border-gray-200 rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105"
+              className="relative group overflow-hidden cursor-pointer rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
+              style={{ gridRowEnd: `span ${Math.floor(Math.random() * 2) + 1}` }} // Adjust height for "Pinterest" effect
               onClick={() => openImageViewer(index)}
             >
-              <img src={image.url} alt="Gallery" className="w-full object-cover" />
+              <img src={image.url} alt="Gallery" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white">
+                <p className="text-lg font-bold">Click to View</p>
+              </div>
               {isAdmin && (
                 <button
                   onClick={(e) => { e.stopPropagation(); handleDeleteImage(image.id, image.url); }}
@@ -127,7 +123,7 @@ const Media = () => {
               )}
             </div>
           ))}
-        </Masonry>
+        </div>
       )}
 
       {selectedImage && (

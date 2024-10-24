@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getFirestore, collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../AuthContext';
-import Loader from '../Components/Loader'; // Assuming you have a Loader component ready
+import { useAuth } from '../../AuthContext';
+import Loader from '../Loader'; // Assuming you have a Loader component ready
 
 const db = getFirestore();
 const allowedUIDs = ["VhdL12OuVJT5LPWZ57xlWHf1R333", "client-uid-2"];

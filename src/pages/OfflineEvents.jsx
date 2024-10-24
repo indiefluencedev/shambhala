@@ -1,8 +1,9 @@
 import React from 'react'
+import OfflinePrograms from '../Components/Programs/OfflinePrograms'
 
 const OfflineEvents = () => {
   return (
-    <div className='py-10 px-20 text-4xl justify-center font-semibold'>OFFLINE EVENTS</div>
+   <OfflinePrograms/>
   )
 }
 

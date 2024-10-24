@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { useAuth } from '../../AuthContext';
+import { useAuth } from '../AuthContext';
 import { v4 as uuidv4 } from 'uuid';
 import Masonry from 'react-masonry-css';
-import Loader from '../Loader';
+import Loader from '../Components/Loader';
 
 const db = getFirestore();
 const storage = getStorage();

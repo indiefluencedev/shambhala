@@ -1,7 +1,7 @@
 import React from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { FaGoogle } from 'react-icons/fa'; // Importing Google icon
-import { auth } from '../../config/firebase'; // Your Firebase config file
+import { auth } from '../config/firebase'; // Your Firebase config file
 
 const Login = () => {
   const googleProvider = new GoogleAuthProvider();

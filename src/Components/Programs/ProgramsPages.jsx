@@ -16,13 +16,12 @@ const Programs = () => {
       const channelId = import.meta.env.VITE_YOUTUBE_CHANNEL_ID;
 
       try {
-        // Fetch live and upcoming events
         const liveResponse = await axios.get('https://www.googleapis.com/youtube/v3/search', {
           params: {
             part: 'snippet',
             channelId: channelId,
             type: 'video',
-            eventType: 'live', // Fetch live and upcoming streams
+            eventType: 'live',
             key: apiKey,
             maxResults: 10
           },
@@ -33,7 +32,6 @@ const Programs = () => {
           status: event.snippet.liveBroadcastContent === 'live' ? 'Live' : 'Upcoming',
         }));
 
-        // Fetch past and uploaded videos
         const pastResponse = await axios.get('https://www.googleapis.com/youtube/v3/search', {
           params: {
             part: 'snippet',
@@ -49,30 +47,22 @@ const Programs = () => {
           status: event.snippet.liveBroadcastContent === 'none' ? 'Past' : event.snippet.liveBroadcastContent.charAt(0).toUpperCase() + event.snippet.liveBroadcastContent.slice(1),
         }));
 
-        // Combine live, upcoming, and past events into a map by videoId
         const allEventsMap = new Map();
-
-        // First, add all past events
         pastEvents.forEach(event => {
           allEventsMap.set(event.id.videoId, event);
         });
 
-        // Next, add live and upcoming events, replacing any upcoming with live if it exists
         liveEvents.forEach(event => {
           if (allEventsMap.has(event.id.videoId)) {
-            // If it's already there (upcoming), update it to live
             allEventsMap.set(event.id.videoId, event);
           } else {
-            // Otherwise, add the live or upcoming event
             allEventsMap.set(event.id.videoId, event);
           }
         });
 
-        // Convert map back to array
         const allEvents = Array.from(allEventsMap.values());
-
         setEvents(allEvents);
-        setFilteredEvents(allEvents); // Initial state with all events
+        setFilteredEvents(allEvents);
       } catch (error) {
         console.error('Error fetching YouTube events:', error);
       }
@@ -92,103 +82,43 @@ const Programs = () => {
     }
   };
 
-  const getStatusStyle = (status) => {
-    let color, lightBackgroundColor, darkBackgroundColor;
-
-    switch (status.toLowerCase()) {
-      case 'live':
-        color = '#ef4444'; // Red
-        lightBackgroundColor = '#fee2e2'; // Light red
-        darkBackgroundColor = '#dc2626'; // Dark red
-        break;
-      case 'upcoming':
-        color = '#22c55e'; // Green
-        lightBackgroundColor = '#d1fae5'; // Light green
-        darkBackgroundColor = '#16a34a'; // Dark green
-        break;
-      case 'past':
-      default:
-        color = '#f59e0b'; // Orange
-        lightBackgroundColor = '#ffedd5'; // Light orange
-        darkBackgroundColor = '#d97706'; // Dark orange
-        break;
-    }
-
-    return {
-      color,
-      backgroundColor: lightBackgroundColor,
-      padding: '4px 8px',
-      borderRadius: '9999px',
-      fontSize: '0.75rem',
-      fontWeight: '600',
-      display: 'flex',
-      alignItems: 'center',
-      animation: `blink-${status.toLowerCase()} 1.5s linear infinite alternate`,
-      position: 'relative',
-    };
-  };
-
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
   return (
     <div className="w-full max-w-screen-xl mx-auto px-4 py-16">
-      {/* Style for blinking animation */}
-      <style>
-        {`
-          @keyframes blink-live {
-            0% { background-color: #fee2e2; }
-            50% { background-color: #dc2626; }
-            100% { background-color: #fee2e2; }
-          }
-          @keyframes blink-upcoming {
-            0% { background-color: #d1fae5; }
-            50% { background-color: #16a34a; }
-            100% { background-color: #d1fae5; }
-          }
-          @keyframes blink-past {
-            0% { background-color: #ffedd5; }
-            50% { background-color: #d97706; }
-            100% { background-color: #ffedd5; }
-          }
-        `}
-      </style>
-
       {/* Dropdown */}
-      <div className="relative inline-block text-left mb-6 w-full md:w-auto">
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          className="bg-white border border-gray-300 text-black py-2 px-4 rounded-md shadow-md flex justify-between items-center w-full md:w-auto"
-          onClick={() => setDropdownOpen(!dropdownOpen)}
-        >
-          {eventType}
-          {dropdownOpen ? (
-            <ChevronUpIcon className="ml-2 w-5 h-5 text-gray-500" />
-          ) : (
-            <ChevronDownIcon className="ml-2 w-5 h-5 text-gray-500" />
-          )}
-        </motion.button>
-        {dropdownOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute right-0 mt-2 w-56 bg-white border border-gray-300 rounded-md shadow-lg z-50"
+      <div className="flex justify-start mb-6">
+        <div className="relative inline-block text-left w-full md:w-auto">
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            className="bg-white border border-gray-300 text-black py-2 px-4 rounded-md shadow-md flex justify-between items-center w-full md:w-auto"
+            onClick={() => setDropdownOpen(!dropdownOpen)}
           >
-            <ul className="py-1">
-              {['All Events', 'Live', 'Upcoming', 'Past'].map((type) => (
-                <li
-                  key={type}
-                  className="cursor-pointer px-4 py-2 hover:bg-gray-200"
-                  onClick={() => handleDropdown(type)}
-                >
-                  {type}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
+            {eventType}
+            {dropdownOpen ? (
+              <ChevronUpIcon className="ml-2 w-5 h-5 text-gray-500" />
+            ) : (
+              <ChevronDownIcon className="ml-2 w-5 h-5 text-gray-500" />
+            )}
+          </motion.button>
+          {dropdownOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute mt-2 w-56 bg-white border border-gray-300 rounded-md shadow-lg z-50 left-1/2 transform -translate-x-1/2"
+            >
+              <ul className="py-1 text-center"> {/* Center the text inside the dropdown */}
+                {['All Events', 'Live', 'Upcoming', 'Past'].map((type) => (
+                  <li
+                    key={type}
+                    className="cursor-pointer px-4 py-2 hover:bg-gray-200"
+                    onClick={() => handleDropdown(type)}
+                  >
+                    {type}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </div>
       </div>
 
       {/* Program Cards or No Data Message */}
@@ -196,7 +126,7 @@ const Programs = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {filteredEvents.map((event, index) => {
             const eventStatus = event.status;
-            const uploadDate = event.snippet.publishedAt ? formatDate(event.snippet.publishedAt) : 'Unknown Date';
+            const uploadDate = event.snippet.publishedAt ? new Date(event.snippet.publishedAt).toLocaleDateString() : 'Unknown Date';
             const videoId = event.id.videoId;
 
             return (
@@ -210,8 +140,7 @@ const Programs = () => {
                 <img src={event.snippet.thumbnails.medium.url || programimage} alt="Program" className="w-full h-48 object-cover" />
                 <div className="flex-grow p-4 flex flex-col">
                   <div className="flex items-center mb-2">
-                    <span style={getStatusStyle(eventStatus)}>
-                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'currentColor', marginRight: '6px' }}></span>
+                    <span className="text-sm font-semibold">
                       {eventStatus}
                     </span>
                   </div>

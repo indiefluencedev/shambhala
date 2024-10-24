@@ -15,7 +15,8 @@ import Blogs from './pages/Blogs';
 import CreateBlogs from './pages/CreateBlog';
 import BlogDetail from './pages/BlogDetail';
 import EditBlog from './pages/EditBlog';
-import ProgramsPages from './Components/Programs/ProgramsPages';
+// import ProgramsPages from './Components/Programs/ProgramsPages';
+import OnlineEvents from './pages/OnlineEvents';
 import OfflineEvents from './pages/OfflineEvents';
 import DonateForm from './Components/DonateForm';
 import ScrollToTop from './Components/Layouts/ScrollToTop'; 
@@ -47,7 +48,7 @@ function App() {
           <Route path="/media" element={<Media />} />
           <Route path="/guides" element={<Guides />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/OnlineEvents" element={<ProgramsPages />} />
+          <Route path="/OnlineEvents" element={<OnlineEvents/>} />
           <Route path="/OfflineEvents" element={<OfflineEvents />} />
           <Route path="/donate" element={<DonateForm />} />
           

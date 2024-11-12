@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "image": "/images/guide1.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  {
+    "id": 2,
+    "image": "/images/guide2.jpg",
+    "text": "Pellentesque euismod, urna eu tincidunt consectetur."
+  },
+  {
+    "id": 3,
+    "image": "/images/guide3.jpg",
+    "text": "Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec."
+  },
+  {
+    "id": 4,
+    "image": "/images/guide4.jpg",
+    "text": "Donec rutrum congue leo eget malesuada."
+  }
+]

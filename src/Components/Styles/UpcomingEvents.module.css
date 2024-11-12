@@ -1,0 +1,242 @@
+/* Outer container to add space around the section */
+.outerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Main container to constrain the width */
+.container {
+  max-width: 1240px; /* Set maximum width to 1240px */
+  width: 100%; /* 100% width of the parent (outerContainer) */
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Adjust the image height */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 350px; /* Increase the height to accommodate the buttons */
+  margin: 0 auto;
+}
+
+.image {
+  width: 100%;
+  height: 100%; /* Ensure the image covers the container */
+  object-fit: cover; /* Maintain the aspect ratio and cover the entire container */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7); /* White overlay with 80% opacity */
+  z-index: 1;
+}
+
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  z-index: 2;
+}
+
+.eventTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.details {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 14px;
+  text-align: center;
+  max-width: 670px;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  line-height: 24px;
+  color: black;
+  font-weight: 400;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.registerButton {
+  padding: 8px 16px;
+  background-color: #348479;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.registerButton:hover {
+  background-color: #246a60;
+}
+
+.eventsButton {
+  padding: 8px 16px;
+  background-color: white;
+  color: #164453;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.eventsButton:hover {
+  background-color: #164453;
+  color: white;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Icon style */
+.icon {
+  font-size: 16px; /* Set the desired size of the icons */
+  margin-right: 8px; /* Space between the icon and the text */
+  vertical-align: middle; /* Align the icon with the text */
+}
+
+/* Responsive design for tablets (768px and below) */
+@media (max-width: 768px) {
+  .imageContainer {
+    height: 280px; /* Adjust height for tablets */
+  }
+
+  .heading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .eventTitle {
+    font-size: 1.3rem; /* Smaller title */
+    font-weight: 500; /* Reduce boldness */
+  }
+
+  .description {
+    font-size: 12px;
+    max-width: 90%;
+    font-weight: 400;
+  }
+
+  .buttons {
+    flex-direction: row; /* Keep buttons in a row */
+    gap: 15px;
+  }
+
+  .registerButton, .eventsButton {
+    font-size: 12px; /* Smaller button text */
+    padding: 8px 16px; /* Adjust padding for smaller buttons */
+  }
+
+  .icon {
+    font-size: 14px; /* Set the desired size of the icons */
+    margin-right: 8px; /* Space between the icon and the text */
+    vertical-align: middle; /* Align the icon with the text */
+  }
+  
+  .details {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between the calendar and location icons */
+    font-size: 14px;
+    color: black;
+    font-weight: 700;
+  }
+  
+  .date, .location {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Responsive design for mobile screens (480px and below) */
+@media (max-width: 480px) {
+  .imageContainer {
+    height: 400px; /* Adjust height for mobile */
+  }
+
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .eventTitle {
+    font-size: 21px;
+    font-weight: 500; /* Reduce boldness */
+  }
+
+  .details {
+    flex-direction: column; /* Stack details vertically */
+    font-size: 12px;
+  }
+
+  .description {
+    font-size: 11px;
+    line-height: 20px; /* Adjust line height for smaller text */
+    font-weight: 400;
+  }
+
+  .buttons {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .registerButton, .eventsButton {
+    font-size: 11px; /* Even smaller button text for mobile */
+    padding: 8px 12px; /* Adjust padding for mobile */
+  }
+
+  .icon {
+    font-size: 12px; /* Set the desired size of the icons */
+    margin-right: 8px; /* Space between the icon and the text */
+    vertical-align: middle; /* Align the icon with the text */
+  }
+  
+  .details {
+    display: flex;
+    justify-content: center;
+    gap: 5px; /* Space between the calendar and location icons */
+    font-size: 12px;
+    color: black;
+    font-weight: 700;
+  }
+  
+  .date, .location {
+    display: flex;
+    align-items: center;
+  }
+}

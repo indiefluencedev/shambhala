@@ -1,0 +1,43 @@
+{
+    "RecommendedByUs": [
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" }
+    ],
+    "SimilarBooks": [
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" }
+    ],
+    "BooksByAuthor": [
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" }
+    ],
+    "EssentialReads": [
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" },
+      { "title": "Book Title: Lorem ipsum odor amet", "year": "2020" }
+    ]
+  }
+  

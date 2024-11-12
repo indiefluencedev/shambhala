@@ -1,0 +1,41 @@
+.gradient-background {
+    background: radial-gradient(circle, rgba(140,180,185,0.8) 30%, rgba(140,180,185,0.5) 50%, transparent 60%);
+}
+
+.h4-text {
+    margin-left: 10px;
+}
+
+
+
+/* Styling specifically for the 768px frame (between 481px and 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .gradient-background {
+        background: radial-gradient(circle, rgba(140,180,185,0.8) 10%, rgba(140,180,185,0.5) 30%, transparent 40%);
+    }
+
+    .h4-text {
+         margin-left: 10px;
+         font-size: 11px;
+    }
+
+    
+}
+
+/* Styling for screens 1024px and below */
+@media (max-width: 1024px) {
+    .gradient-lg {
+        background: radial-gradient(circle, rgba(140,180,185,0.8) 30%, rgba(140,180,185,0.5) 50%, transparent 60%);
+    }
+
+    .h4-text {
+        margin-left: 10px;
+   }
+}
+
+/* Styling for screens 480px and below */
+@media (max-width: 480px) {
+    .gradient-lg {
+        background: radial-gradient(circle, rgba(140,180,185,0.8) 30%, rgba(140,180,185,0.5) 50%, transparent 60%);
+    }
+}

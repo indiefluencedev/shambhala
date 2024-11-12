@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Global font styles */
+body {
+    font-family: 'Lato', sans-serif; /* Default font for body and non-heading elements */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Lora', serif; /* Font for all headings */
+    margin: 0;
+  }
+  
+  a {
+    font-family: 'Lato', sans-serif; /* Ensure links inherit Lato */
+    text-decoration: none;
+  }
+  
+  p, span, li, input, textarea, button,h4, h5, h6 {
+    font-family: 'Lato', sans-serif; /* Ensure all other elements use Lato */
+  }
+  

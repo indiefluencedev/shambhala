@@ -1,0 +1,19 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Rules for blogs collection
+    match /blogs/{blogId} {
+      // Allow anyone to read from the blogs collection
+      allow read: if true;
+      // Restrict write access to authenticated admins only
+      allow write: if request.auth != null && request.auth.uid in ["VhdL12OuVJT5LPWZ57xlWHf1R333", "client-uid-2"];
+    }
+    
+    // Rules for media collection
+    match /media/{mediaId} {
+      // Allow anyone to read from the media collection
+      allow read: if true;
+      // Restrict write access to authenticated admins only
+      allow write: if request.auth != null && request.auth.uid in ["VhdL12OuVJT5LPWZ57xlWHf1R333", "client-uid-2"];
+    }
+  }
+}
